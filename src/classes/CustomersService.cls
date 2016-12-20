@@ -2,17 +2,17 @@
  * Created by DvandeLindt on 20-12-2016.
  */
 
-public with sharing class CustomerService {
+public with sharing class CustomersService {
     
-    public static ICustomerMapper instance;
+    public static ICustomersMapper instance;
     
-    public static ICustomerMapper getInstance() {
+    public static ICustomersMapper getInstance() {
         if (instance == null)
         {
             if (Test.isRunningTest())
-                instance = (ICustomerMapper) new CustomerMapperMock();
+                instance = (ICustomersMapper) new CustomerMapperMock();
             else
-                instance = (ICustomerMapper) new CustomerMapper();
+                instance = (ICustomersMapper) new CustomerMapper();
         }
         
         return instance;
@@ -25,7 +25,7 @@ public with sharing class CustomerService {
         if ( String.isBlank( id ) ) {
             customer = instance.getCustomerById( id );
         }
-
+        
         return customer;
     }
 }
